@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- ContextAware -->
+	<bean id="ContextAware" class="com.weblog.context.Context" />
+	<!-- bean -->
+	<bean name="PageDao" class="com.weblog.dao.impl.PageDaoImpl"/>
+	<bean name="ChannelDao" class="com.weblog.dao.impl.ChannelDaoImpl"/>
+	<bean name="DocumentDao" class="com.weblog.dao.impl.DocumentDaoImpl"/>
+	<bean name="AttachmentDao" class="com.weblog.dao.impl.AttachmentDaoImpl"/>
+	<bean name="RoleDao" class="com.weblog.dao.impl.RoleDaoImpl"/>
+	<bean name="UserDao" class="com.weblog.dao.impl.UserDaoImpl"/>
+	<bean name="FlowRecordDao" class="com.weblog.dao.impl.FlowRecordDaoImpl"/>
+	<bean name="NoteDao" class="com.weblog.dao.impl.NoteDaoImpl"/>
+	<!-- controller -->
+	<bean name="ResourceTreeController" class="com.weblog.controller.ResourceTreeController">
+		<property name="resourceTreeService" ref="ResourceTreeService" />
+	</bean>
+	<bean name="ChannelController" class="com.weblog.controller.ChannelController">
+		<property name="channelDao" ref="ChannelDao"></property>
+	</bean>
+	<bean name="DocController" class="com.weblog.controller.DocController">
+		<property name="docDao" ref="DocumentDao"></property>
+		<property name="pageDao" ref="PageDao"></property>
+		<property name="flowRecordDao" ref="FlowRecordDao"></property>
+	</bean>
+	<bean name="RoleController" class="com.weblog.controller.RoleController">
+		<property name="roleDao" ref="RoleDao"></property>
+	</bean>
+	<bean name="RoleTreeController" class="com.weblog.controller.RoleTreeController">
+		<property name="roleTreeService" ref="RoleTreeService"></property>
+	</bean>
+	<bean name="UserController" class="com.weblog.controller.UserController">
+		<property name="userDao" ref="UserDao"></property>
+		<property name="pageDao" ref="PageDao"></property>
+	</bean>
+	<bean name="AttachmentController" class="com.weblog.controller.AttachmentController">
+		<property name="attachmentDao" ref="AttachmentDao"></property>
+	</bean>
+	<bean name="LoginController" class="com.weblog.controller.LoginController">
+		<property name="userDao" ref="UserDao"></property>
+	</bean>
+	<bean name="NoteController" class="com.weblog.controller.NoteController">
+		<property name="noteDao" ref="NoteDao"></property>
+		<property name="pageDao" ref="PageDao"></property>
+	</bean>
+	<bean name="CustomerController" class="com.weblog.controller.CustomerController">
+	</bean>
+	<!-- service -->
+	<bean name="ResourceTreeService" class="com.weblog.service.impl.ResourceTreeServiceImpl">
+		<property name="channelDao" ref="ChannelDao" />
+	</bean>
+	<bean name="RoleTreeService" class="com.weblog.service.impl.RoleTreeServiceImpl">
+		<property name="roleDao" ref="RoleDao" />
+	</bean>
+	
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order"><value>0</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="sys/role.do">RoleController</prop>
+				<prop key="sys/roleTree.do">RoleTreeController</prop>
+				<prop key="sys/user.do">UserController</prop>
+				<prop key="workspace/resource.do">ResourceTreeController</prop>
+				<prop key="workspace/channel.do">ChannelController</prop>
+				<prop key="workspace/doc.do">DocController</prop>
+				<prop key="workspace/attach.do">AttachmentController</prop>
+				<prop key="workspace/login.do">LoginController</prop>
+				<prop key="workspace/note.do">NoteController</prop>
+				<prop key="customer.do">CustomerController</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

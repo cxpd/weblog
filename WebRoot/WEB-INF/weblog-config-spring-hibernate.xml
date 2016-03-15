@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- ContextAware -->
+	<bean id="ContextAware" class="com.weblog.context.ContextAware" init-method="setToContext"/>
+	<!-- sessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	<!-- hibernateTemplete
+	<bean id="hibernateTemplete" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="hibernateDaoSupport" class="org.springframework.orm.hibernate3.support.HibernateDaoSupport" abstract="true">  
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>  
+	</bean>
+	
+	<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">  
+		<property name="sessionFactory" ref="sessionFactory"/>  
+	</bean> -->
+	
+	<!-- Dao -->
+	<bean id="RoleDao" class="com.weblog.role.RoleDaoImpl">
+		<!-- <property name="hibernateTemplate" ref="hibernateTemplete"></property> -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>

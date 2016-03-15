@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.weblog.unit">
+	<class name="Unit" table="TB_UNIT">
+		<id name="unitId" column="unitid" type="java.lang.Integer">
+			<generator class="assigned"/>
+		</id>
+		<property name="unitName" column="unitname" type="java.lang.String" not-null="false" />
+		<property name="parentId" column="parentid" type="java.lang.Integer" not-null="false" />
+	</class>
+</hibernate-mapping>

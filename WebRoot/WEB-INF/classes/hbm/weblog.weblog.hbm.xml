@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.weblog.weblog">
+	<class name="Weblog" table="TB_WEBLOG">
+		<id name="logId" column="logid" type="java.lang.Integer">
+			<generator class="assigned"/>
+		</id>
+		<property name="logType" column="logtype" type="java.lang.String" not-null="false" />
+		<property name="userId" column="userid" type="java.lang.Integer" not-null="false" />
+		<property name="username" column="username" type="java.lang.String" not-null="false" />
+		<property name="logdate" column="logdate" type="java.lang.String" not-null="false" />
+		<property name="logcontent" column="logcontent" type="java.lang.String" not-null="false" />
+		<property name="iscommit" column="logcontent" type="java.lang.Integer" not-null="false" />
+	</class>
+</hibernate-mapping>

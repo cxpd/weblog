@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.weblog.user">
+	<class name="User" table="TB_USER">
+		<id name="userId" column="userid" type="java.lang.Integer">
+			<generator class="assigned"/>
+		</id>
+		<property name="userName" column="username" type="java.lang.String" not-null="false" />
+		<property name="loginId" column="loginid" type="java.lang.String" not-null="false" />
+		<property name="loginPw" column="loginpw" type="java.lang.String" not-null="false" />
+		<property name="unitId" column="unitid" type="java.lang.Integer" not-null="false" />
+		<property name="roleId" column="roleid" type="java.lang.Integer" not-null="false" />
+	</class>
+</hibernate-mapping>

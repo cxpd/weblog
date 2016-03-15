@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.weblog.role">
+	<class name="Role" table="TB_ROLE">
+		<id name="roleId" column="roleid" type="java.lang.Integer">
+			<generator class="assigned"/>
+		</id>
+		<property name="roleName" column="rolename" type="java.lang.String" not-null="false" />
+		<property name="permission" column="permission" type="java.lang.String" not-null="false" />
+	</class>
+</hibernate-mapping>
